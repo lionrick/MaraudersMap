@@ -21,5 +21,42 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content" />
 
+    <LinearLayout
+        android:gravity="bottom"
+        android:layout_alignParentBottom="true"
+        android:layout_width="match_parent"
+        android:layout_height="65dp">
+        <TextView
+            android:id="@+id/numberPeople"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:gravity="bottom"
+            android:text="Número de pessoas:"
+            android:textColor="@color/app_dark_red"
+            android:textSize="16sp" />
+
+        <TextView
+            android:id="@+id/txtNumeroPessoas"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="8dp"
+            android:layout_marginStart="8dp"
+            android:gravity="bottom"
+            android:text="0"
+            android:textColor="@color/app_dark_red"
+            android:textSize="20sp" />
+
+        <TextView
+            android:id="@+id/ramal"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="50dp"
+            android:layout_marginStart="50dp"
+            android:text="Ramal: 6258"
+            android:textColor="@color/app_dark_red"
+            android:textSize="16sp" />
+
+    </LinearLayout>
+
 
 </RelativeLayout>

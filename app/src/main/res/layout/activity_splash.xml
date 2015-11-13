@@ -11,36 +11,4 @@
 
 
 
-
-    <TextView
-        android:id="@+id/numberPeople"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:gravity="bottom"
-        android:text="Número de pessoas:"
-        android:textColor="@android:color/white"
-        android:textSize="16sp" />
-
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginLeft="8dp"
-        android:layout_marginStart="8dp"
-        android:gravity="bottom"
-        android:text="19"
-        android:textColor="@android:color/white"
-        android:textSize="14sp" />
-
-    <TextView
-        android:id="@+id/ramal"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginLeft="50dp"
-        android:layout_marginStart="50dp"
-        android:text="Ramal: 6258"
-        android:textColor="@android:color/white"
-        android:textSize="16sp" />
-
-
-
 </LinearLayout>
