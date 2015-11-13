@@ -13,6 +13,7 @@ import maraudersmap.takenet.com.br.maraudersmap.model.LocalListener;
 import maraudersmap.takenet.com.br.maraudersmap.model.Pessoa;
 import maraudersmap.takenet.com.br.maraudersmap.model.PessoaDao;
 import maraudersmap.takenet.com.br.maraudersmap.model.PessoaListener;
+import maraudersmap.takenet.com.br.maraudersmap.util.PeopleLocationManager;
 
 public class SplashActivity extends AppCompatActivity {
 
@@ -21,6 +22,7 @@ public class SplashActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+
         setContentView(R.layout.activity_splash);
 
         new Handler().postDelayed(new Runnable() {
