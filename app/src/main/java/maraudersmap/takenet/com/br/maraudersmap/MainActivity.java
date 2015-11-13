@@ -31,7 +31,7 @@ public class MainActivity extends AppCompatActivity {
             name = ProfileUtil.getName();
             p.setMacAddress(NetWorkUtil.getMacAddress());
             p.setNome(name);
-            PessoaDao.create(p);
+            PessoaDao.insert(p);
             SharedPreferencesHelper.write(this, "mapa", "pessoa", name);
 
         } else {
