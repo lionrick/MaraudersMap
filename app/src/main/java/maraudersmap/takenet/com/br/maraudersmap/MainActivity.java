@@ -2,11 +2,9 @@ package maraudersmap.takenet.com.br.maraudersmap;
 
 import android.animation.Animator;
 import android.content.Context;
-import android.graphics.Point;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.util.DisplayMetrics;
-import android.view.Display;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.FrameLayout;
@@ -79,6 +77,7 @@ public class MainActivity extends AppCompatActivity implements LocalListener, Pe
             ImageView img = (ImageView) v.findViewById(R.id.imgPessoa);
             img.setImageResource(R.drawable.dog_front);
 
+
             TextView text = (TextView) v.findViewById(R.id.txtNome);
             text.setText(pessoa.getNome());
             containerPeople.addView(v);
@@ -119,20 +118,21 @@ public class MainActivity extends AppCompatActivity implements LocalListener, Pe
         }
 
 
+
         if (Math.cos(direction) > Math.cos(45)) {
-            img.setImageResource(R.drawable.footprint);
+            img.setImageResource(R.drawable.foot_print_right);
         }
 
         if (Math.cos(direction) < Math.cos(135)) {
-            img.setImageResource(R.drawable.footprint);
+            img.setImageResource(R.drawable.foot_print_left);
         }
 
         if (Math.cos(direction) < Math.cos(45) && Math.cos(direction) > Math.cos(135)) {
             if (Math.sin(direction) > 0) {
-                img.setImageResource(R.drawable.footprint);
+                img.setImageResource(R.drawable.foot_print_bottom);
             } else {
+                img.setImageResource(R.drawable.foot_print_top);
 
-                img.setImageResource(R.drawable.footprint);
             }
         }
 
