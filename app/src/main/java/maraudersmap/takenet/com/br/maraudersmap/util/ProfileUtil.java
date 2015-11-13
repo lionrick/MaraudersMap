@@ -10,8 +10,9 @@ public class ProfileUtil {
     public static String getName() {
         Cursor c = MaraudersMapApplication.getContext().getContentResolver().query(ContactsContract.Profile.CONTENT_URI, null, null, null, null);
         c.moveToFirst();
-        String nome = c.getString(c.getColumnIndex("display_name"));
+        String nome = c.getString(c.getColumnIndex((ContactsContract.Contacts.DISPLAY_NAME)));
         c.close();
         return nome;
     }
+
 }
