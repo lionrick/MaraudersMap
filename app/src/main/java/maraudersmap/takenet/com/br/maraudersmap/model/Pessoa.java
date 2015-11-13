@@ -11,6 +11,10 @@ public class Pessoa implements Serializable{
         this.macAddress = macAddress;
     }
 
+    public Pessoa() {
+
+    }
+
     public String getNome() {
         return nome;
     }
