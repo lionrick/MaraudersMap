@@ -1,5 +1,7 @@
 package maraudersmap.takenet.com.br.maraudersmap;
 
+import android.content.Intent;
+import android.os.Handler;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 
@@ -12,7 +14,7 @@ import maraudersmap.takenet.com.br.maraudersmap.model.Pessoa;
 import maraudersmap.takenet.com.br.maraudersmap.model.PessoaDao;
 import maraudersmap.takenet.com.br.maraudersmap.model.PessoaListener;
 
-public class SplashActivity extends AppCompatActivity implements LocalListener, PessoaListener {
+public class SplashActivity extends AppCompatActivity {
 
     private static final int SPLASH_TIME_OUT = 3000;
 
@@ -21,30 +23,19 @@ public class SplashActivity extends AppCompatActivity implements LocalListener, 
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_splash);
 
-        LocalDao.getLocal(this);
-        PessoaDao.getLisPessoas(this);
+        new Handler().postDelayed(new Runnable() {
 
-/*        new Handler().postDelayed(new Runnable() {
-            
             @Override
             public void run() {
-             
+
                 Intent intent = new Intent(SplashActivity.this, MainActivity.class);
                 startActivity(intent);
                 finish();
 
             }
-        }, SPLASH_TIME_OUT);*/
+        }, SPLASH_TIME_OUT);
 
     }
 
-    @Override
-    public void onLoad(Local local) {
-        System.out.println(local.getNome());
-    }
 
-    @Override
-    public void onLoadList(List<Pessoa> listaPessoas) {
-        System.out.println(listaPessoas.size());
-    }
 }
