@@ -1,5 +1,7 @@
 package maraudersmap.takenet.com.br.maraudersmap;
 
+import android.content.Intent;
+import android.os.Handler;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 
@@ -13,33 +15,26 @@ import maraudersmap.takenet.com.br.maraudersmap.util.SharedPreferencesHelper;
 
 public class SplashActivity extends AppCompatActivity {
 
+    private static final int SPLASH_TIME_OUT = 3000;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_splash);
 
-        persistData();
+        new Handler().postDelayed(new Runnable() {
+            
+            @Override
+            public void run() {
+             
+                Intent intent = new Intent(SplashActivity.this, MainActivity.class);
+                startActivity(intent);
+                finish();
 
-       /* Firebase myFirebaseRef = new Firebase("https://maraudersmapp.firebaseio.com/"); //just a test
-        myFirebaseRef.child("message").setValue("Do you have data? You'll love Firebase.");*/
-    }
-
-    private void persistData() {
-
-        String name = SharedPreferencesHelper.read(this, "mapa", "pessoa", "");
-
-        if (name == null || !name.isEmpty()) {
-            Pessoa p = new Pessoa();
-            name = ProfileUtil.getName();
-            p.setMacAddress(NetWorkUtil.getMacAddress());
-            p.setNome(name);
-            PessoaDao.create(p);
-            SharedPreferencesHelper.write(this, "mapa", "pessoa", name);
-
-        } else {
-            return;
-        }
-
+                finish();
+            }
+        }, SPLASH_TIME_OUT);
 
     }
+
 }
