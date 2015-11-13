@@ -3,7 +3,7 @@ package maraudersmap.takenet.com.br.maraudersmap;
 import android.animation.Animator;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
-import android.view.View;
+import android.widget.ImageView;
 
 import java.util.List;
 
@@ -23,6 +23,8 @@ public class MainActivity extends AppCompatActivity implements LocalListener, Pe
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         persistData();
+        ImageView image = (ImageView) findViewById(R.id.dog);
+        animateView(image, 0, 0);
     }
 
     private void persistData() {
@@ -51,21 +53,41 @@ public class MainActivity extends AppCompatActivity implements LocalListener, Pe
     }
 
 
-    private void animateView(final View view, int translationX, int translationY ) {
+    private void animateView(final ImageView view, int translationX, int translationY) {
         int distance = 100; //the distance to move in pixels
         int duration = 1000; //the duration of the animation in ms
 
         double direction = Math.random() * 2 * Math.PI;
+        int sin = (int) (Math.sin(direction) * distance);
+        int cos = (int) (Math.cos(direction) * distance);
 
-        translationX += (int) (Math.cos(direction) * distance);
-        translationY += (int) (Math.sin(direction) * distance);
+        translationX += cos;
+        translationY += sin;
 
-        if(translationX<0){
-            translationX = 0 ;
+
+        if (translationX < 0) {
+            translationX = 0;
         }
 
-        if(translationY<0){
+        if (translationY < 0) {
             translationY = 0;
+        }
+
+        if (Math.cos(direction) > Math.cos(45)) {
+            view.setImageResource(R.drawable.dog_right);
+        }
+
+        if (Math.cos(direction) < Math.cos(135)) {
+            view.setImageResource(R.drawable.dog_left);
+        }
+
+        if (Math.cos(direction) < Math.cos(45) && Math.cos(direction) > Math.cos(135)) {
+            if (Math.sin(direction) > 0) {
+                view.setImageResource(R.drawable.footprint);
+            } else {
+
+                view.setImageResource(R.drawable.footprint);
+            }
         }
 
         final int finalTranslationY = translationY;
@@ -78,7 +100,6 @@ public class MainActivity extends AppCompatActivity implements LocalListener, Pe
 
             @Override
             public void onAnimationEnd(Animator animation) {
-                System.out.println("x"+finalTranslationX+" y"+finalTranslationY);
                 animateView(view, finalTranslationX, finalTranslationY);
             }
 
