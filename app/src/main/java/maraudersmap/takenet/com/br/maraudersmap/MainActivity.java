@@ -28,7 +28,7 @@ import maraudersmap.takenet.com.br.maraudersmap.util.SharedPreferencesHelper;
 public class MainActivity extends AppCompatActivity implements LocalListener, PessoaListener {
 
     private FrameLayout containerPeople;
-
+    private TextView txtNumeroPessoas;
     private ProgressBar progress;
 
     @Override
@@ -37,6 +37,7 @@ public class MainActivity extends AppCompatActivity implements LocalListener, Pe
         setContentView(R.layout.activity_main);
         containerPeople = (FrameLayout) findViewById(R.id.containerPeople);
         progress = (ProgressBar) findViewById(R.id.progress);
+        txtNumeroPessoas = (TextView) findViewById(R.id.txtNumeroPessoas);
         persistData();
         PessoaDao.getLisPessoas(this);
 
@@ -69,6 +70,7 @@ public class MainActivity extends AppCompatActivity implements LocalListener, Pe
     public void onLoadList(List<Pessoa> listaPessoas) {
         //intanciate the ghost if empty
         progress.setVisibility(View.GONE);
+        txtNumeroPessoas.setText(listaPessoas.size()+"");
         containerPeople.removeAllViews();
         for (Pessoa pessoa : listaPessoas) {
 
@@ -110,11 +112,11 @@ public class MainActivity extends AppCompatActivity implements LocalListener, Pe
             translationY = 0;
         }
 
-        if(translationX > getWidthScreen()){
+        if(translationX > (getWidthScreen()-200)){
             translationX = getWidthScreen();
         }
 
-        if (translationY > getHeightScreen()){
+        if (translationY > (getHeightScreen()-100)){
             translationY = getHeightScreen();
         }
 
